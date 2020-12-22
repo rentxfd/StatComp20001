@@ -10,29 +10,6 @@ vignette: >
 ---
 
 ## Overview
-
-The source R code for _ScoreConv_ is as follows:
-
-```{r eval=FALSE}
-ScoreConv <- function(score) {
-  if(score >= 90) {
-    res = "excellent"
-  } else if(score >= 80) {
-    res = "good"
-  } else if(score >= 70) {
-    res = "fair"
-  } else if(score >= 60) {
-    res = "pass"
-  } else {
-    res = "fail"
-  }
-  res
-}
-```
-
-The above code converts 90 points or more into excellent,80-90 points into good, 70-80 points into fair, 60-70 points into pass, and 60 points into fail.
-
-
 The source R code for _Svoleequation_ is as follows:
 
 ```{r eval=FALSE}
@@ -55,3 +32,94 @@ Solveequation <- function(f,a,b,eps=1e-5){
 ```
 
 The above code is a function to find the root of nonlinear equation by dichotomy, it involves 'ifelse', 'repeat', which are known to be slow.
+
+
+
+
+The source R code for _norm.fun_ is as follows:
+
+```{r eval=FALSE}
+norm.fun <- function(theta,x) 
+{	
+  mu <- theta[1]
+  sigma1 <- theta[2] 	
+  n <- length(x)
+  logL <- -0.5*n*log(2*pi)-0.5*n*log(sigma1)-(1/(2*sigma1))*sum((x-mu)**2) 
+  return(-logL)  
+}
+
+```
+
+
+The above code is a function to find the MLE of the mean and variance.
+
+
+
+
+The source R code for _N.test_ is as follows:
+
+```{r eval=FALSE}
+N.test<- function(x,mu,sigma,a=0.05,alternative='two.side'){  
+  xbar <- mean(x)
+   n <- length(x)	 
+
+if(alternative=='two.side') 
+{
+  N <- qnorm(a/2) 
+  area1 <- xbar-(sigma/n)**0.5*N
+  area2 <- xbar+(sigma/n)**0.5*N
+  area=c(area1,area2)
+  NT=(xbar-mu)/(sigma/n)**0.5 
+  TF='reject' 
+  if ( abs(NT)<abs(N))  
+  {
+    TF='accept'  
+  }
+  result=list('accept_or_reject'=TF,'interval estimation'=area)
+  
+}
+
+if(alternative=='less')
+{
+  N=qnorm(a)
+  area1=xbar+(sigma/n)**0.5*N
+  area2=Inf  
+  area=c(area1,area2)
+  
+  NT=(xbar-mu)/(sigma/n)**0.5
+  TF='reject'
+  if (NT>N)
+  {
+    TF='accept'
+  }
+  result=list('accept_or_reject'=TF,'interval estimation'=area)
+  
+}
+
+if(alternative=='greater')
+{
+  N=-qnorm(a)   
+  area1=-Inf
+  area2=xbar-(sigma/n)**0.5*N
+  
+  area=c(area1,area2)
+  
+  NT=(xbar-mu)/(sigma/n)**0.5
+  TF='reject'
+  if (NT<N)
+  {
+    TF='accept'
+  }
+  result=list('accept_or_reject'=TF,'interval estimation'=area)
+}
+
+return(result)
+}
+
+```
+The above code is a function to find the interval estimation and  hypothesis testing, it involves 'ifelse', 'list', which are known to be slow.
+
+
+
+
+

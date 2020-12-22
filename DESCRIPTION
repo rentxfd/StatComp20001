@@ -5,7 +5,7 @@ Version: 1.0
 Date: 2020-12-19
 Author: Tianxiang Ren
 Maintainer: Tianxiang Ren <2111427099@qq.com>
-Description: Score conversion function using R,a function that solves the equation by dichotomy using R,and a function generating standard Laplace distribution using Rcpp are provided in this package.
+Description: a function that solves the equation by dichotomy using R,the maximum likelihood function for the normal distribution using R,interval estimation and hypothesis testing function of mean when the variance of a normal population is known,and a function generating standard Laplace distribution using Rcpp are provided in this package.
 License: GPL (>= 2)
 Imports: Rcpp (>= 1.0.5),Ball,DAAG,MASS,RANN,boot,bootstrap,energy,RcppArmadillo,microbenchmark
 LinkingTo: Rcpp
