@@ -1,0 +1,57 @@
+---
+title: "Usage"
+author: "Tianxiang Ren"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Usage}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+## Overview
+
+The source R code for _ScoreConv_ is as follows:
+
+```{r eval=FALSE}
+ScoreConv <- function(score) {
+  if(score >= 90) {
+    res = "excellent"
+  } else if(score >= 80) {
+    res = "good"
+  } else if(score >= 70) {
+    res = "fair"
+  } else if(score >= 60) {
+    res = "pass"
+  } else {
+    res = "fail"
+  }
+  res
+}
+```
+
+The above code converts 90 points or more into excellent,80-90 points into good, 70-80 points into fair, 60-70 points into pass, and 60 points into fail.
+
+
+The source R code for _Svoleequation_ is as follows:
+
+```{r eval=FALSE}
+Solveequation <- function(f,a,b,eps=1e-5){
+  if (f(a)*f(b)>0)
+    list(fail="finding root is fail!")
+  else{
+    repeat {
+      if (abs(b-a)<eps) break      
+      x <- (a+b)/2
+      if (f(a)*f(x)<0)
+        b <- x
+      else
+        a <- x
+    }
+    list(root=(a+b)/2, fun=f((a+b)/2))
+  }
+}
+
+```
+
+The above code is a function to find the root of nonlinear equation by dichotomy, it involves 'ifelse', 'repeat', which are known to be slow.

@@ -1,0 +1,17 @@
+Package: StatComp20001
+Type: Package
+Title: Final Homework of 'Statistical Computing' course
+Version: 1.0
+Date: 2020-12-19
+Author: Tianxiang Ren
+Maintainer: Tianxiang Ren <2111427099@qq.com>
+Description: Score conversion function using R,a function that solves the equation by dichotomy using R,and a function generating standard Laplace distribution using Rcpp are provided in this package.
+License: GPL (>= 2)
+Imports: Rcpp (>= 1.0.5),Ball,DAAG,MASS,RANN,boot,bootstrap,energy,RcppArmadillo,microbenchmark
+LinkingTo: Rcpp
+RoxygenNote: 7.1.1
+Encoding: UTF-8
+Suggests: knitr,rmarkdown
+VignetteBuilder: knitr
+URL: http://github.com/rentxfd/StatComp20001
+BugReports: http://github.com/rentxfd/StatComp20001/issues
